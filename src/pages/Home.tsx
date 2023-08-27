@@ -7,6 +7,7 @@ import Newsletter from '../components/Newsletter';
 
 const Home = () => {
   const [stories, setStories] = useState<any>([]);
+  const [otherStories, setOtherStories] = useState<any>([]);
 
   useEffect(() => {
     client.fetch( `*[_type == "post"] {
@@ -26,16 +27,19 @@ const Home = () => {
         },
         alt
       }
-    }[0..5]`).then((data) => setStories(data)).catch(console.error);
+    }[0..5]`).then((data) => { 
+      setStories(data)
+      //setOtherStories(data.slice(1, data.length));
+    }).catch(console.error);
   }, []);
 
   return (
     <div className='flex flex-col gap-10'>
       <section className='max-w-7xl mx-auto px-5 w-full'>
-        <HeroCard />
+        <HeroCard story={stories[0]}/>
       </section>
       <section className='grid sm:grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 max-w-7xl mx-auto px-20 my-16'>
-        {
+       {
           stories.map((story: any) => (
             <Card story={story} key={story.slug.current}/>
           ))

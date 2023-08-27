@@ -21,7 +21,7 @@ const ThemeToggler = () => {
       <div className='text-xs trasition ease-in-out duration-500'>🌙</div>
       <div className='text-xs trasition ease-in-out duration-500'>🔆</div>
       <div 
-        className={`absolute w-4 h-4 bg-yellow-500 rounded-full trasition-all ease-in-out duration-2000 ${theme ==='light' ? 'left-1' : 'right-1'}`}
+        className={`absolute w-4 h-4 bg-yellow-300 rounded-full trasition-all ease-in-out duration-2000 ${theme ==='light' ? 'left-1' : 'right-1'}`}
       />
     </div>
   )
